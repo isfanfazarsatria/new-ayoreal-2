@@ -84,7 +84,7 @@ app.use("/api/v1/product", productRoute);
 // app.use(express.static(path.join(__dirname, "public")));
 
 //Routing Homepage
-app.get("/", (req, res) => res.send("Welcome to Tutorin API"));
+app.get("/", (req, res) => res.send("Welcome to Ayoreal API"));
 
 //404 Not found
 app.all("*", (req, res) =>
