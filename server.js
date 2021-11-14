@@ -11,12 +11,13 @@ const cors = require("cors");
 
 //Import Router
 const mongoose = require("mongoose");
+const authRoute = require("./src/routes/authRoute");
+const categoryRoute = require("./src/routes/categoryRoute");
+const productRoute = require("./src/routes/productRoute");
 // const managementRoute = require("./src/routes/management");
 // const subjectRoute = require("./src/routes/subjectRoute");
 // const tutorRoute = require("./src/routes/tutorRoute");
 // const studentRoute = require("./src/routes/studentRoute");
-// const categoryRoute = require("./src/routes/categoryRoute");
-// const courseRoute = require("./src/routes/courseRoute");
 // const reviewRoute = require("./src/routes/reviewRoute");
 // const skillRoute = require("./src/routes/skillRoute");
 // const levelRoute = require("./src/routes/levelRoute");
@@ -56,12 +57,13 @@ app.use(
 // app.use(passport.session());
 
 //Routing API
+app.use("/api/v1/auth", authRoute);
+app.use("/api/v1/category", categoryRoute);
+app.use("/api/v1/product", productRoute);
 // app.use("/api/v1/management", managementRoute);
 // app.use("/api/v1/subject", subjectRoute);
 // app.use("/api/v1/student", studentRoute);
-// app.use("/api/v1/category", categoryRoute);
 // app.use("/api/v1/tutor", tutorRoute);
-// app.use("/api/v1", courseRoute);
 // app.use("/api/v1", reviewRoute);
 // app.use("/api/v1", skillRoute);
 // app.use("/api/v1", levelRoute);
