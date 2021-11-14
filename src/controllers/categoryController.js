@@ -4,51 +4,51 @@ const { categoryModel } = require("../../database/models/categoryModel");
 const { productModel } = require("../../database/models/productModel");
 
 //Get all Category
-exports.getAllCategorys = async (req, res) => {
-  //Pagination
-  const page = parseInt(req.query.page);
-  const limit = parseInt(req.query.limit);
+// exports.getAllCategorys = async (req, res) => {
+//   //Pagination
+//   const page = parseInt(req.query.page);
+//   const limit = parseInt(req.query.limit);
 
-  const startIndex = (page - 1) * limit;
-  const endIndex = page * limit;
+//   const startIndex = (page - 1) * limit;
+//   const endIndex = page * limit;
 
-  const data = {};
+//   const data = {};
 
-  if (endIndex < (await categoryModel.countDocuments().exec())) {
-    data.next = {
-      page: page + 1,
-      limit: limit,
-    };
-  }
+//   if (endIndex < (await categoryModel.countDocuments().exec())) {
+//     data.next = {
+//       page: page + 1,
+//       limit: limit,
+//     };
+//   }
 
-  if (startIndex > 0) {
-    data.previous = {
-      page: page - 1,
-      limit: limit,
-    };
-  }
-  try {
-    data.total_data = await categoryModel.countDocuments().exec();
-    data.results = await categoryModel
-      .find()
-      .limit(limit)
-      .skip(startIndex)
-      .exec();
+//   if (startIndex > 0) {
+//     data.previous = {
+//       page: page - 1,
+//       limit: limit,
+//     };
+//   }
+//   try {
+//     data.total_data = await categoryModel.countDocuments().exec();
+//     data.results = await categoryModel
+//       .find()
+//       .limit(limit)
+//       .skip(startIndex)
+//       .exec();
 
-    res.json({
-      statusCode: 200,
-      statusText: "success",
-      data,
-    });
-  } catch (error) {
-    console.log(error);
-    res.json({
-      statusCode: 500,
-      statusText: "fail",
-      statusMessage: error,
-    });
-  }
-};
+//     res.json({
+//       statusCode: 200,
+//       statusText: "success",
+//       data,
+//     });
+//   } catch (error) {
+//     console.log(error);
+//     res.json({
+//       statusCode: 500,
+//       statusText: "fail",
+//       statusMessage: error,
+//     });
+//   }
+// };
 
 //Get a Category by ID
 exports.getCategory = async (req, res) => {

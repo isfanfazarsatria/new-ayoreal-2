@@ -3,7 +3,7 @@ const express = require("express");
 const route = express.Router();
 
 const {
-  getAllCategorys,
+  // getAllCategorys,
   getCategory,
   createCategory,
   updateCategory,
@@ -11,7 +11,7 @@ const {
 } = require("../controllers/categoryController");
 
 //Get All Categorys
-route.get("/", getAllCategorys);
+// route.get("/", getAllCategorys);
 
 //Get single Category by id
 route.get("/:id", getCategory);
