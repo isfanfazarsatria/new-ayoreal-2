@@ -3,11 +3,12 @@ const express = require("express");
 const route = express.Router();
 
 const {
+    getAllProducts,
     createProduct
 } = require("../controllers/productController");
 
-// //Get All Categorys
-// route.get("/", getAllCategorys);
+// //Get All Products
+route.get("/", getAllProducts);
 
 // //Get single Category by id
 // route.get("/:id", getCategory);
