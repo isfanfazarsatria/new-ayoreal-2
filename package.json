@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.24.0",
     "connect-mongo": "^4.6.0",
     "connect-session": "0.0.1",
     "cors": "^2.8.5",
