@@ -14,9 +14,9 @@ router.post("/otp", async (req, res) => {
     try {
         const { phone } = req.body;
         const user = await AuthModel.findOne({ phone });        
-        if (user) {
+        if (!user) {
             return res.status(400).json({
-                message: "Number already exists"
+                message: "ex : 812345678"
             });
         } else {
             twilio.verify.services(VERIFICATION_SID).verifications
