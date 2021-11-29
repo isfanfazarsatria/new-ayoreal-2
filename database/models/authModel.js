@@ -15,7 +15,6 @@ const authSchema = new Schema(
     isVerified: {
       type: Boolean,
       default: false,
-      allowNull: true,
     },
   },
   {
