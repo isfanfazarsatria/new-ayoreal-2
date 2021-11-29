@@ -14,7 +14,7 @@ router.post("/otp", async (req, res) => {
     try {
         const { phone } = req.body;
         const user = await AuthModel.findOne({ phone });        
-        if (!user) {
+        if (!phone) {
             return res.status(400).json({
                 message: "please input phone number without 0"
             });            
