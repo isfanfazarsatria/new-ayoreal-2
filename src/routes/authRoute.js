@@ -27,24 +27,16 @@ router.post("/otp", async (req, res) => {
     const otp = Math.floor(Math.random() * 1000000);
     const message = `Your OTP is ${otp}`;
     if (channel === "sms") {
-        twilio.messages
-            .create({
-                body: message,
-                from: TWILIO_NUMBER,
-                to: phone,
-            })
-            .then(message => {
-                console.log(message.sid);
-                res.status(200).json({
+        twilio.verify.services(VERIFICATION_SID)
+            .verifications
+            .create({ to: phone, channel: "sms" })
+            .then(verification => {
+                console.log(verification.status);
+                return res.status(200).json({
                     message: "OTP has been sent",
                 });
-            })
-            .catch(err => {
-                console.log(err);
-                res.status(500).json({
-                    message: "Internal server error",
-                });
-            });
+            }
+            );
     }
     const newAuth = new AuthModel({
         phone,
