@@ -20,7 +20,7 @@ router.post("/otp", async (req, res) => {
             });
         } else {
             twilio.verify.services(VERIFICATION_SID).verifications
-            .create({ to: `+62${req.body.phone}`})
+            .create({ to: `+62${req.body.phone}`, channel: 'sms' })
             .then(verification => {
                 res.send({ verification });
                 });
