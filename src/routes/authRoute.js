@@ -17,8 +17,9 @@ router.post("/otp", async (req, res) => {
         if (!user) {
             return res.status(400).json({
                 message: "please input phone number without 0"
-            });
-        } else {
+            });            
+        } 
+        if (user) {
             twilio.verify.services(VERIFICATION_SID).verifications
             .create({ to: `+62${req.body.phone}`, channel: 'sms' })
             .then(verification => {
