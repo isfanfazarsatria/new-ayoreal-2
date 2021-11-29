@@ -14,12 +14,16 @@ router.post("/otp", async (req, res) => {
     try {
         const { phone } = req.body;
         const user = await AuthModel.findOne({ phone });        
-        if (!phone) {
-            return res.status(400).json({
-                message: "please input phone number without 0"
-            });            
-        } 
         if (user) {
+            return res.status(400).json({
+                message: "Number already exists"
+            });
+        } 
+        if (!user){
+            return res.status(400).json({
+                message: "pls fill phone number"
+            });
+        }else {
             twilio.verify.services(VERIFICATION_SID).verifications
             .create({ to: `+62${req.body.phone}`, channel: 'sms' })
             .then(verification => {
