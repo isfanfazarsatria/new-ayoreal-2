@@ -16,7 +16,7 @@ router.post("/otp", async (req, res) => {
         const user = await AuthModel.findOne({ phone });        
         if (!user) {
             return res.status(400).json({
-                message: "ex : 812345678"
+                message: "please input phone number without 0"
             });
         } else {
             twilio.verify.services(VERIFICATION_SID).verifications
