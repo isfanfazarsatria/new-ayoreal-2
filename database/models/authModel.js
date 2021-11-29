@@ -12,6 +12,10 @@ const authSchema = new Schema(
       type: String,
       default: "sms",
     },
+    isVerified: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     timestamps: true,

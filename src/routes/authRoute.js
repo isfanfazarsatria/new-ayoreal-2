@@ -13,10 +13,10 @@ router.post("/otp", async (req, res) => {
     //validasi jika nomor telfon tidak di isi
     try {
         const { phone } = req.body;
-        const user = await AuthModel.findOne({ phone });
-        if (user) {
+        const user = await AuthModel.findOne({ isVerified: false, phone });
+        if (user.isVerified === true) {
             return res.status(400).json({
-                message: "Number already exists"
+                message: "User already verified"
             });
         } else {
             twilio.verify.services(VERIFICATION_SID).verifications
