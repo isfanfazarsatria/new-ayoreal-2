@@ -15,6 +15,7 @@ const authRoute = require("./src/routes/authRoute");
 const categoryRoute = require("./src/routes/categoryRoute");
 const productRoute = require("./src/routes/productRoute");
 const profesionalVerifRoutes = require('./src/routes/kycRoute')
+const userRoute = require("./src/routes/userRoute");
 // const managementRoute = require("./src/routes/management");
 // const subjectRoute = require("./src/routes/subjectRoute");
 // const tutorRoute = require("./src/routes/tutorRoute");
@@ -62,6 +63,7 @@ app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/category", categoryRoute);
 app.use("/api/v1/product", productRoute);
 app.use("/api/v1/profesional_verif", profesionalVerifRoutes);
+app.use("/api/v1/user", userRoute);
 // app.use("/api/v1/management", managementRoute);
 // app.use("/api/v1/subject", subjectRoute);
 // app.use("/api/v1/student", studentRoute);
