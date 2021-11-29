@@ -9,6 +9,8 @@ const twilio = require('twilio')(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 
 
 router.post("/otp", async (req, res) => {
+    //validasi jika user resend otp
+    //validasi jika nomor telfon tidak di isi
     try {
         const { phone } = req.body;
         const user = await AuthModel.findOne({ phone });
@@ -18,14 +20,14 @@ router.post("/otp", async (req, res) => {
             });
         } else {
             twilio.verify.services(VERIFICATION_SID).verifications
-            .create({ to: `+62${req.body.phone}`, channel: 'sms' })
+            .create({ to: `+62${req.body.phone}`})
             .then(verification => {
                 res.send({ verification });
                 });
                 const newUser = new AuthModel({
                     phone,
                 });
-            await newUser.save();
+                await newUser.save();
             return res.status(200).json({
                 message: "Number registered successfully",
                 data : phone

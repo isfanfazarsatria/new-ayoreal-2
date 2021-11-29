@@ -8,6 +8,10 @@ const authSchema = new Schema(
       type: String,
       allowNull: false,
     },
+    channel: {
+      type: String,
+      default: "sms",
+    },
   },
   {
     timestamps: true,
