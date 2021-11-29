@@ -52,6 +52,8 @@ router.post("/verify", async (req, res) => {
         const verification = await twilio.verify.services(VERIFICATION_SID).verificationChecks
             .create({ to: `+62${req.body.phone}`, code });
         if (verification.status === "approved") {
+            user.isVerified = true;
+            await user.save();
             return res.status(200).json({
                 message: "Number verified successfully",
                 verification
