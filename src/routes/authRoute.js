@@ -18,12 +18,7 @@ router.post("/otp", async (req, res) => {
             return res.status(400).json({
                 message: "Number already exists"
             });
-        } 
-        if (!user){
-            return res.status(400).json({
-                message: "pls fill phone number"
-            });
-        }else {
+        } else {
             twilio.verify.services(VERIFICATION_SID).verifications
             .create({ to: `+62${req.body.phone}`, channel: 'sms' })
             .then(verification => {
