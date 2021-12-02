@@ -8,12 +8,12 @@ const express = require('express');
 const twilio = require('twilio')(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 
 
-router.post("/otp", async (req, res) => {
+router.post("/otp", async (req, res) => { 
     //validasi jika user resend otp
     //validasi jika nomor telfon tidak di isi
     try {
         const { phone } = req.body;
-        const user = await AuthModel.findOne({ phone });        
+        const user = await AuthModel.findOne({ phone });         
         if (user) {
             return res.status(400).json({
                 message: "Number already exists"
